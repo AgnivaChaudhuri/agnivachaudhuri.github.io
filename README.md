@@ -3,9 +3,7 @@ My personal website
 
 # Website
 
-This is my personal Github Pages website. I put whatever I like here: scientific guides, technical guides, scientific...explosions,  my projects, stuff I develop, etc.
-
-I will probably move it to a dedicated website when I can start running that. That'll take a few months but it's worth it.
+This is my personal Github Pages website. I put whatever I like here: scientific guides, technical guides, scientific...explosions,  my projects, stuff I develop, etc. I might eventually move it to a dedicated website.
 
 # Purposes
 
