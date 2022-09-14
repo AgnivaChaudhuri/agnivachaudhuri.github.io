@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>How A Vehicle Steers</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<style type="text/css" media="all">
+@import "/stdtheme.css";
+</style>
+</head>
+<body>
+<div class="footer" style="text-align: center;"><a href="/index.html">Home</a> --- <a href="/discoveries/info.html">Discoveries</a> --- <a href="/guides/info.html">Guides</a></div>
+<script src="/mathjax-config.js" async></script>
+<div style="text-align: center;">
+<h1>How A Vehicle Steers</h1>
+</div>
+<h2>Introduction</h2>
+<p>Steering a vehicle is a routine thing for most of us, and rather simple - turn the wheel where you want to go. But how exactly does it steer? This article explains the path that a steering vehicle takes - including when all 4 wheels steer. The word "vehicle" is used because this is not just about cars; it applies to bikes, trucks, and any vehicle with wheels (or any vehicle with points that go in different directions).</p>
+<p>All variables apply only to their section unless otherwise specified.</p>
+<h2>Summary</h2>
+<p>The vehicle moves in a circle. Every point on the vehicle moves in concentric circles to maintain distance from every other point and is tangent to its circle. This summary explains what happens with a 4-wheeled car with steering assist. For simplicity, call the front right wheel $w_1$, the back right wheel $w_2$, the front left wheel $w_3$, and the back left wheel $w_4$. Under the following conditions and definitions:
+<li>$a_{wx}$ is the angle that wheel $w_x$ turns</li>
+<li>$a_{w1}$ and $a_{w2}$ are known</li>
+<li>The car is steering to the right</li>
+<li>$r_{wx}$ is the radius of wheel $w_x$'s circle</li>
+<li>the horizontal distance between the wheels is $t$</li>
+<li>the front-to-back distance between the wheels is $c$</li>
+<li>$q_{wx}$ is the distance between $w_x$ and the intersection point of the vehicle and a perpendicular radius (point $Q$)</li>
+<li>$s$ is the distance between $Q$ and the center of the circle</li>
+<br>
+then
+$$r_{w2}=\frac{c}{\sin{(a_{w1}+a_{w2})}}\cdot \cos{a_{w1}}$$
+$$r_{w1}=\frac{c}{\sin{(a_{w1}+a_{w2})}}\cdot \cos{a_{w2}}$$
+$$q_{w1}=r_{w1}\sin{(a_2)}$$
+$$q_{w2}=r_{w2}\sin{(a_1)}$$
+$$s=\sqrt{r_{w1}^2-q_{w1}^2}$$
+$$a_{w3} = \arctan{(\frac{q_{w1}}{t+s})}$$
+$$a_{w4} = \arctan{(\frac{q_{w2}}{t+s})}$$
+<br>
+The radii and other properties can be solved the same way as for $w_1$ and $w_2$.
+</p> 
+<h2>Basic Principles</h2>
+<p>This section explains the basic principles. The header is the principle while the text underneath proves why the principle is correct.</p>
+<h3>Every Point on the Vehicle Moves in a Circle Centered at One Point</h3>
+<p>The wheels are pointed in different directions, and each wants to go the direction it is pointed. But it cannot do this, as the vehicle is bound together, so the direction each wheel is pointed in must change. This process repeats infinitely often over an infinitely small distance, so the vehicle goes in a circle.</p>
+<h3>Not Every Point on the Vehicle Moves in a Circle the Same Size (Concentric Circles)</h3>
+<p>Because the vehicle has nonzero dimensions, different points on the vehicle are different distances away from the center of the circle. In other words, their circles have different radii and are concentric.</p>
+<h3>Each Wheel is Pointed Tangent to its Circle</h3>
+<p>Each wheel goes in a circle, and is pointed tangent to its circle; otherwise it would be skidding. It is possible to steer by drifting but this is not what we are looking for and it is very dangerous.</p>
+<p>This principle becomes very relevant when the vehicle has more than 2 wheels.</p>
+
+<h2>Properties of a Chord</h2>
+<p>The information in the summary was the result of working on decreasingly simplified models, starting with a chord of a circle representing a bike whose wheels each turn an equal amount. Suppose you have a chord of length $c$ whose arc makes an angle $2\theta$. The diameter $d$ of the circle is $\frac{c}{\sin{\theta}}$, shown in Figure 1.</p>
+<div style="text-align: center;">
+<img src="/chord.png" width="152" height="252">
+<p>Figure 1</p>
+</div>
+<br>
+<p>To prove this, take Figure 1. Intuitively, $\angle{GAD} = \angle{AOC}$. Suppose $O$ is a unit circle; $OA = 1$, so $\sin{(\theta)} = \frac{AC}{OA} = AC$. If $r$ is $O$'s radius, then $r = \frac{AC}{\sin{(\theta)}}$. $AC$ is half the chord $AB$, and $r$ is half the diameter, so $d$ and $AB$ can be substituted for $r$ and $AC$ respectively. Everything scales up by the radius of the circle.</p>
+<h2>A Standard Bike</h2>
+<p>Now consider a bike. Its front wheel is turned at angle $\theta$ so it is half of a chord making angle $2\theta$, shown in Figure 2. Let $AC$ = $c$, the distance between the wheels.</p>
+<div style="text-align: center;">
+<img src="/bike.png" width="192" height="252">
+<p>Figure 2</p>
+</div>
+<br>
+<p>The wheels travel in differently sized circles because for a circle to be tangent to the front wheel at the same horizontal point as the back wheel, it has to be larger than the back wheel's circle. The front wheel's circle diameter is $d_2$ and the back wheel's is $d_1$. Finding $d_2$ is straightforward; since $AC$ is half a chord, just plug into last section's formula: $$d_2 = \frac{2c}{\sin{(\theta)}}$$ Finding $d_1$ is also straightforward. Look at Figure 1: similar to how $AC = \sin{(\theta)}$, $OC = \cos{(\theta)}$ and this scales proportional to the radius (and diameter). So, $d_1 = d_2\cos{(\theta)}$.
+<p>In a real bike, the rider must lean into the turn, but that does not affect his turn radius.</p>
+<h2>A Steering-Assisted Bike</h2>
+<p>Consider a bike of length $c$ whose wheels can each turn independently. The front wheel is turned at angle $a_1$ and the back wheel at angle $a_2$, shown in Figure 3.</p>
+<div style="text-align: center;">
+<img src="/twobike.png" width="175" height="252">
+<p>Figure 3</p>
+</div>
+<br>
+<p>Triangle $AOC$ connects the center of the circle and the wheels to each other. $AC$ is known (length $c$), $OC$ is the back wheel's turn radius (length $r_2$), and $OA$ is the front wheel's (length $r_1$). Apply Law of Sines: $$\frac{c}{\sin{(O)}} = \frac{r_1}{\sin{(\angle{OCA})}} = \frac{r_2}{\sin{(\angle{CAO})}}$$ Finding $\angle{OCA}$ and $\angle{CAO}$ is straightforward: because $\angle{DAB} = \angle{DCB} = \pi$, and $\angle{GAO} = \angle{ECO} = \pi/2$, the triangle's angles are just the complements of their wheel angles. So $\angle{OCA} = \frac{\pi}{2} - a_2$ and $\angle{CAO} = \frac{\pi}{2} - a_1$. The sine of an angle is the cosine of its complement, so edit our Law Of Sines equation: $$\frac{c}{\sin{(O)}} = \frac{r_1}{\cos{(a_2)}} = \frac{r_2}{\cos{(a_1)}}$$ Rearrange this equation however you like to find each radius.</p>
+<h2>A Standard Car</h2>
+<p>Consider a standard 4-wheeled car where only the front wheels turn. Because each wheel is tangent to its circle, the left and right front wheels turn different amounts (otherwise, the circles would not be concentric). Apply the definitions from the summary here. $a_1$ and $a_2$ in the figure are $a_{w3}$ and $a_{w1}$ respectively.</p>
+<div style="text-align: center;">
+<img src="/car.png" width="182" height="252">
+<p>Figure 4 (the central $a_1$ angle is for $\angle{AOI}$)</p>
+</div>
+<br>
+<p>This is like two bikes locked together. If $a_{w3}$ is known, then $r_{w3}$ and $r_{w4}$ can be calculated as in "A Standard Bike", and $r_{w4} + t = r_{w2}$.</p>
+<p>Use the Pythagorean theorem to find $r_{w1}$: $$r_{w1} = \sqrt{c^2 + r_{w2}^2}$$ And to find $a_{w1}$: $$a_{w1} = \arctan{(\frac{c}{r_{w2}})}$$ Use a similar process if $a_{w1}$ is known and $a_{w3}$ is not.</p>
+<h2>An All-Wheel Steering Car</h2>
+<p>Use all the definitions from the summary here. When all wheels steer the car, simply treat it as two bikes whose wheels steer independently. If $a_{w3}$ and $a_{w4}$ are known, solve for their radii normally. Now consider Figure 5.</p>
+<div style="text-align: center;">
+<img src="/twocar.png" width="185" height="252">
+<p>Figure 5 ($a_x = a_{wx}$ to save space, and the line perpendicular to $HI$ is $OK$)</p>
+</div>
+<br>
+<p>Right triangle $QOC$ has angle $a_{w4}$, so $q_{w4} = r_{w4}\sin{(a_4)}$, and through the Pythagorean Theorem, $s=\sqrt{r_{w4}^2-q_{w4}^2}$. Solve similarly for $w_3$'s properties. Right triangle $KOI$ has legs $q_{w4}$ and $s+t$, so $a_{w2} = \arctan{(\frac{q_{w4}}{s+t})}$. Solve for $r_{w2}$ through the Pythagorean Theorem, and for $w_1$'s properties similarly.</p>
+<h2>Applications, Considerations, and Conclusion</h2>
+<p>If the vehicle has more than two sets of wheels, then just treat it like multiple bikes locked together. This is extensible to ANY vehicle type, regardless of the shape, size, or unusuality. Additionally, any point on the vehicle can be found using a combination of right triangles and arctans.</p>
+
+<p>This has many real-world implications. It is why one must parallel park in reverse, why excessively sharp turns hit the curb even though the front wheels clear it, and can model a car rolling over. Remember to add half the tire width when doing real-world calculations. Interestingly, only one point on the tire can ever contact the ground, because the tire is bound together (you can't just twist it apart) and has a nonzero width. This means the inside of the tire spins somewhat freely, and the outside skids!</p>
+
+<p>This is also why trailers need to be designed well! If the wheels are straight locked in place, they cannot be tangent to their circle and will skid! This could cause the trailer to tip over and take the car with it. The wheels must be able to turn somehow, such as through caster wheels or steering linkages.</p>
+
+<p>Given the increasing computerization of cars, a car could calculate the minimum and maximum turn radius, display it, and determine whether the driver will run into something. Combined with the speed, the car could also calculate whether it will roll over from centrifugal force.</p>
+<p>Who knows where else these principles will be used...</p>
+
+</body>
+</html>
