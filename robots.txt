@@ -1,0 +1,3 @@
+User-agent: Googlebot
+Sitemap: https://agnivachaudhuri.github.io/sitemap.xml
+Disallow: /meta/
