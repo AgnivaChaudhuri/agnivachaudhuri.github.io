@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Using Fscrypt with incompatible filesystems</title>
-<style
-type="text/css" media="all"> @import "/stdtheme.css";
+<head>
+<title>Using Fscrypt with incompatible filesystems</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<style type="text/css" media="all">
+@import "/stdtheme.css";
 </style>
-	</head>
-	<body>
-		<h1>Using fscrypt with incompatible filesystems</h1>
-		<p><a href="https://www.kernel.org/doc/html/latest/filesystems/fscrypt.html"> Fscrypt</a> is a Linux filesystem-based encryption library that filesystems can hook on to. It's a finer-grained alternative to full-disk encryption, with some benefits and drawbacks. Unfortunately, only ext4, F2FS, and UBIFS support it. One could use a stacked filesystem like eCryptFS, but that reduces performance and limits file names to 143 characters. (<a href="https://docs.google.com/document/d/1iNnrqyZqJ2I5nfWKt7cd1T9xwU0iHhjhk9ALQW3XuII/edit">BTRFS is planning on adding fscrypt support, though it's an early stage.</a> )</p><p></p>
-		<h2>The Workaround</h2>
-		<p>Luckily, there is a way to work around this! Because everything is a file, it is possible to create a file, fill it up with zeros, format it as an fscrypt-compatible filesystem, and then mount it where wanted.</p>
-		<p>The following commands generally require root. Log in as root or escalate privileges however you want.</p>
-		<p>Run</p>
-		<p>touch \file\</p>
-		<p>where \file\ is the desired file path. Keep it in /tmp! :) (/tmp is cleared every shutdown)</p>
-		<p>Next, run</p>
-		<p>dd if=/dev/zero of=\file\ bs=\bs\ count=\count\</p>
-		<p>where \bs\ and \count\ are arbitrary integers that multiply to your desired size. Making \bs\ as large as possible wastes less effort switching back and forth, but dd might throw an error if you make bs too large.</p><p>Next, run</p>
-		<p>mkfs.ext4 \file\</p>
-		<p>to format it as ext4. (You can use any supported filesystem instead.)</p>
-		<p>Run</p>
-		<p>mount \file\ \mountpoint\</p>
-		<p>where \mountpoint\ is your desired mountpoint. </p>
-		<p>After this, you can use fscrypt as usual. Some nice resources are <a href="https://github.com/google/fscrypt">Google's documentation</a> and <a href="https://wiki.archlinux.org/title/Fscrypt">the Arch wiki entry</a>.</p>
-
+<script src="/mathjax-config.js" async></script>
+</head>
+<body>
+<div class="footer" style="text-align: center;"><a href="/index.html">Home</a> --- <a href="/interesting/info.html">Interesting Things</a> --- <a href="/guides/info.html">Guides</a></div>
+<div style="text-align: center;">
+<h1>Using fscrypt with incompatible filesystems</h1>
+<p>Originally Published November 16, 2021</p>
+<p>Last Modified September 13, 2022</p>
+</div>
+<p><a href="https://www.kernel.org/doc/html/latest/filesystems/fscrypt.html"> Fscrypt</a> is a Linux filesystem-based encryption library that filesystems can hook on to. It's a finer-grained alternative to full-disk encryption, with some benefits and drawbacks. Unfortunately, only ext4, F2FS, and UBIFS support it. One could use a stacked filesystem like eCryptFS, but that reduces performance and limits file names to 143 characters. (<a href="https://docs.google.com/document/d/1iNnrqyZqJ2I5nfWKt7cd1T9xwU0iHhjhk9ALQW3XuII/edit">BTRFS is planning on adding fscrypt support, though it's an early stage.</a> )</p><p></p>
+<h2>The Workaround</h2>
+<p>Luckily, there is a way to work around this! Because everything is a file, it is possible to create a file, fill it up with zeros, format it as an fscrypt-compatible filesystem, and then mount it where wanted.</p>
+<p>The following commands generally require root. Log in as root or escalate privileges however you want.</p>
+<p>Run</p>
+<p>touch \file\</p>
+<p>where \file\ is the desired file path. Keep it in /tmp! :) (/tmp is cleared every shutdown)</p>
+<p>Next, run</p>
+<p>dd if=/dev/zero of=\file\ bs=\bs\ count=\count\</p>
+<p>where \bs\ and \count\ are arbitrary integers that multiply to your desired size. Making \bs\ as large as possible wastes less effort switching back and forth, but dd might throw an error if you make bs too large.</p><p>Next, run</p>
+<p>mkfs.ext4 \file\</p>
+<p>to format it as ext4. (You can use any supported filesystem instead.)</p>
+<p>Run</p>
+<p>mount \file\ \mountpoint\</p>
+<p>where \mountpoint\ is your desired mountpoint. </p>
+<p>After this, you can use fscrypt as usual. Some nice resources are <a href="https://github.com/google/fscrypt">Google's documentation</a> and <a href="https://wiki.archlinux.org/title/Fscrypt">the Arch wiki entry</a>.</p>
 </body>
 </html>
