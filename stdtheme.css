@@ -29,3 +29,7 @@ li {
 ul {
 	overflow-wrap: break-word;
 }
+
+p {
+	line-height: 1.5em;
+}
