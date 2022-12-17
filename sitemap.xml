@@ -37,12 +37,17 @@
 </url>
 <url>
   <loc>https://agnivachaudhuri.github.io/interesting/parabola.html</loc>
-  <lastmod>2022-09-23T21:21:17+00:00</lastmod>
+  <lastmod>2022-09-28T21:21:17+00:00</lastmod>
   <priority>0.90</priority>
 </url>
 <url>
   <loc>https://agnivachaudhuri.github.io/guides/fscrypt-incompatible-fs.html</loc>
-  <lastmod>2022-09-23T21:21:17+00:00</lastmod>
+  <lastmod>2022-11-29T20:33:29+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://agnivachaudhuri.github.io/interesting/calc-log.html</loc>
+  <lastmod>2022-12-16T23:55:01+00:00</lastmod>
   <priority>0.90</priority>
 </url>
 </urlset>
