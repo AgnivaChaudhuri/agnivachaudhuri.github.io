@@ -33,7 +33,7 @@
 *{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
 body{
-  margin: 30;
+  margin: 30px;
   font-family: var(--sans);
   background: var(--bg);
   color: var(--text);
